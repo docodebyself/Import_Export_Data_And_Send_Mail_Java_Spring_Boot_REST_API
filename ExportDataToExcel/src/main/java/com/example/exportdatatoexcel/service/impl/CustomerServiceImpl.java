@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 @Service
@@ -56,6 +57,11 @@ public class CustomerServiceImpl implements CustomerService {
         //send mail
         mailService.sendMailCreateCustomer(customerDTO);
         return baseResponse;
+    }
+
+    @Override
+    public List<File> getAllFiles() {
+        return null;
     }
 
     private void saveData(List<CustomerDTO> customerDTOList){
