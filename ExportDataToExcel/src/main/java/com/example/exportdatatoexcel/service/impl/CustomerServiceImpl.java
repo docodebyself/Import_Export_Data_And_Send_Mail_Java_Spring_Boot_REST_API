@@ -13,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,8 +61,31 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<File> getAllFiles() {
-        return null;
+    public List<File> getFilesFromServer() {
+        return getFileFromComputer();
+    }
+
+    @Override
+    public List<File> zipExcelFileFromDatabase() throws Exception {
+        List<Customer> customers = customerRepository.findAll();
+        String fileName = "Customer_Export" + ".xlsx";
+        List<File> resultFiles = ExcelUtils.getFilesExcelStoreDataFromDatabase(customers, fileName);
+        return resultFiles;
+    }
+
+    private List<File> getFileFromComputer(){
+        List<File> result = new ArrayList<>();
+        File file1 = new File("F:\\template\\1.PNG");
+        File file2 = new File("F:\\template\\2.PNG");
+        File file3 = new File("F:\\template\\3.PNG");
+        File file4 = new File("F:\\template\\4.PNG");
+        File excelFile = new File("F:\\template\\Customer Export.xlsx");
+        result.add(file1);
+        result.add(file2);
+        result.add(file3);
+        result.add(file4);
+        result.add(excelFile);
+        return result;
     }
 
     private void saveData(List<CustomerDTO> customerDTOList){

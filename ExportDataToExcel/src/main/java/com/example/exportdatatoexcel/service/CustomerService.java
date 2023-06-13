@@ -12,5 +12,7 @@ public interface CustomerService {
 
     BaseResponse createCustomer(CustomerDTO customerDTO);
 
-    List<File> getAllFiles();
+    List<File> getFilesFromServer();
+
+    List<File> zipExcelFileFromDatabase() throws Exception;
 }

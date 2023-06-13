@@ -14,7 +14,7 @@ import java.io.OutputStream;
 
 @Component
 public class FileFactory {
-    public static final String PATH_TEMPLATE = "C:\\Users\\Thanh\\Downloads\\Template\\";
+    public static final String PATH_TEMPLATE = "F:\\template\\";
 
     public static File createFile(String fileName, Workbook workbook) throws Exception {
 
